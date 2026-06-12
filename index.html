@@ -3,7 +3,517 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>JS Assignment (Ch 31-34)</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f7f6;
+        color: #333;
+        margin: 0;
+        padding: 20px;
+      }
+      .container {
+        max-width: 800px;
+        margin: 0 auto;
+        background: #ffffff;
+        padding: 30px;
+        border-radius: 8px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      }
+      h1 {
+        text-align: center;
+        color: #2c3e50;
+        border-bottom: 2px solid #3498db;
+        padding-bottom: 10px;
+      }
+      .question-card {
+        background: #fafafa;
+        border-left: 5px solid #3498db;
+        padding: 15px;
+        margin: 20px 0;
+        border-radius: 0 4px 4px 0;
+      }
+      h3 {
+        margin-top: 0;
+        color: #2c3e50;
+      }
+      p {
+        font-style: italic;
+        color: #666;
+      }
+      button {
+        background-color: #3498db;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        font-size: 14px;
+        cursor: pointer;
+        border-radius: 4px;
+      }
+      button:hover {
+        background-color: #2980b9;
+      }
+      .output-box {
+        margin-top: 15px;
+        padding: 12px;
+        background: #eef2f5;
+        border-radius: 4px;
+        font-family: monospace;
+        white-space: pre-line;
+        display: none;
+        border: 1px solid #dcdde1;
+      }
+    </style>
   </head>
-  <body></body>
+  <body>
+    <div class="container">
+      <h1>JavaScript Assignment (Chapters 31-34)</h1>
+
+      <div class="question-card">
+        <h3>
+          Q1. Write a program that displays current date and time in your
+          browser.
+        </h3>
+        <h4>CODE:</h4>
+        <pre>
+var currentDate = new Date();
+var result = currentDate;
+displayOutput("output1", result);</pre
+        >
+        <button onclick="runQ1()">Run Code</button>
+        <div id="output1" class="output-box"></div>
+      </div>
+
+      <div class="question-card">
+        <h3>
+          Q2. Write a program that alerts the current month in words. For
+          example December.
+        </h3>
+        <h4>CODE:</h4>
+        <pre>
+var currentDate = new Date();
+var dateStr = currentDate.toString();
+var currentMonth = dateStr.slice(4, 7);
+alert("Current month: " + currentMonth);
+var result = "Current month: " + currentMonth;
+displayOutput("output2", result);</pre
+        >
+        <button onclick="runQ2()">Run Code</button>
+        <div id="output2" class="output-box"></div>
+      </div>
+
+      <div class="question-card">
+        <h3>
+          Q3. Write a program that alerts the first 3 letters of the current
+          day, for example if today is Sunday then alert will show Sun.
+        </h3>
+        <h4>CODE:</h4>
+        <pre>
+var currentDate = new Date();
+var dateStr = currentDate.toString();
+var currentDay = dateStr.slice(0, 3);
+alert("Today is " + currentDay);
+var result = "Today is " + currentDay;
+displayOutput("output3", result);</pre
+        >
+        <button onclick="runQ3()">Run Code</button>
+        <div id="output3" class="output-box"></div>
+      </div>
+
+      <div class="question-card">
+        <h3>
+          Q4. Write a program that displays a message “It’s Fun day” if its
+          Saturday or Sunday today.
+        </h3>
+        <h4>CODE:</h4>
+        <pre>
+var currentDate = new Date();
+var dayIndex = currentDate.getDay();
+var result = "";
+if (dayIndex === 0 || dayIndex === 6) {
+  result = "It's Fun day";
+} else {
+  result = "It's a working day";
+}
+displayOutput("output4", result);</pre
+        >
+        <button onclick="runQ4()">Run Code</button>
+        <div id="output4" class="output-box"></div>
+      </div>
+
+      <div class="question-card">
+        <h3>
+          Q5. Write a program that shows the message “First fifteen days of the
+          month” if the date is less than 16th of the month else shows “Last
+          days of the month”.
+        </h3>
+        <h4>CODE:</h4>
+        <pre>
+var currentDate = new Date();
+var date = currentDate.getDate();
+var result = "";
+if (date < 16) {
+  result = "First fifteen days of the month";
+} else {
+  result = "Last days of the month";
+}
+displayOutput("output5", result);</pre
+        >
+        <button onclick="runQ5()">Run Code</button>
+        <div id="output5" class="output-box"></div>
+      </div>
+
+      <div class="question-card">
+        <h3>
+          Q6. Write a program that determines the minutes since midnight, Jan.
+          1, 1970 and displays it.
+        </h3>
+        <h4>CODE:</h4>
+        <pre>
+
+        var currentDate = new Date();
+        var startOf1970 = new Date(1970, 0, 1);
+
+       
+        var elapsedMilli = currentDate - startOf1970;
+        var elapsedMinutes = elapsedMilli / (1000 * 60); 
+
+        var result =
+          "Current Date: " +
+          currentDate +
+          "\nElapsed milliseconds since January 1, 1970: " +
+          elapsedMilli +
+          "\nElapsed minutes since January 1, 1970: " +
+          elapsedMinutes;
+
+        displayOutput("output6", result);
+      </pre
+        >
+        <button onclick="runQ6()">Run Code</button>
+        <div id="output6" class="output-box"></div>
+      </div>
+
+      <div class="question-card">
+        <h3>
+          Q7. Write a program that tests whether it's before noon and alert “Its
+          AM” else “its PM”.
+        </h3>
+        <h4>CODE:</h4>
+        <pre>
+var currentDate = new Date();
+var hours = currentDate.getHours();
+var result = "";
+if (hours < 12) {
+  alert("It's AM");
+  result = "It's AM";
+} else {
+  alert("It's PM");
+  result = "It's PM";
+}
+displayOutput("output7", result);</pre
+        >
+        <button onclick="runQ7()">Run Code</button>
+        <div id="output7" class="output-box"></div>
+      </div>
+
+      <div class="question-card">
+        <h3>
+          Q8. Write a program that creates a Date object for the last day of the
+          last month of 2020 and assigns it to variable named laterDate.
+        </h3>
+        <h4>CODE:</h4>
+        <pre>
+var laterDate = new Date(2020, 11, 31);
+var result = "Later date: " + laterDate;
+displayOutput("output8", result);</pre
+        >
+        <button onclick="runQ8()">Run Code</button>
+        <div id="output8" class="output-box"></div>
+      </div>
+
+      <div class="question-card">
+        <h3>
+          Q9. Create a date object of the starting date of this Ramadan and
+          alert the number of days past since 1st Ramadan? (Note: 1st Ramadan
+          was on June 18, 2015).
+        </h3>
+        <h4>CODE:</h4>
+        <pre>
+
+  var ramadanStart = new Date(2015, 5, 18);
+  var currentDate = new Date();
+
+  
+  var diffTime = currentDate - ramadanStart; 
+  var diffDays = diffTime / (1000 * 60 * 60 * 24); 
+
+  var result = Math.floor(diffDays) + " days have passed since 1st Ramadan, 2015";
+  
+  alert(result);
+  displayOutput("output9", result);
+</pre
+        >
+        <button onclick="runQ9()">Run Code</button>
+        <div id="output9" class="output-box"></div>
+      </div>
+
+      <div class="question-card">
+        <h3>
+          Q10. Write a program that displays in your browser the seconds that
+          elapsed between the reference date and the beginning of 2015.
+        </h3>
+        <h4>CODE:</h4>
+        <pre>
+        var referenceDate = new Date();
+        var startOf2015 = new Date(2015, 0, 1);
+
+        var diffMilli = referenceDate - startOf2015;
+        var diffSeconds = diffMilli / 1000;
+
+        var result =
+          "On reference date " +
+          referenceDate +
+          ",\n" +
+          Math.floor(diffSeconds) +
+          " seconds had passed since beginning of 2015";
+
+        displayOutput("output10", result);</pre
+        >
+        <button onclick="runQ10()">Run Code</button>
+        <div id="output10" class="output-box"></div>
+      </div>
+
+      <div class="question-card">
+        <h3>
+          Q11. Create a Date object for the current date and time. Extract the
+          hours, reset the date object an hour ahead and finally display the
+          date object in your browser.
+        </h3>
+        <h4>CODE:</h4>
+        <pre>
+var currentDate = new Date();
+var currentHours = currentDate.getHours();
+var updatedDate = new Date();
+updatedDate.setHours(currentHours + 1);
+var result = "current date: " + currentDate + "\n1 hour ahead, it will be " + updatedDate;
+displayOutput("output11", result);</pre
+        >
+        <button onclick="runQ11()">Run Code</button>
+        <div id="output11" class="output-box"></div>
+      </div>
+
+      <div class="question-card">
+        <h3>
+          Q12. Write a program that creates a date object and show the date in
+          an alert box that is reset to 100 years back.
+        </h3>
+        <h4>CODE:</h4>
+        <pre>
+var currentDate = new Date();
+var pastDate = new Date();
+pastDate.setFullYear(currentDate.getFullYear() - 100);
+alert("100 years back, it was " + pastDate);
+var result = "current date: " + currentDate + "\n100 years back, it was " + pastDate;
+displayOutput("output12", result);</pre
+        >
+        <button onclick="runQ12()">Run Code</button>
+        <div id="output12" class="output-box"></div>
+      </div>
+
+      <div class="question-card">
+        <h3>
+          Q13. Write a program to ask the user about his age. Calculate and show
+          his birth year in your browser.
+        </h3>
+        <h4>CODE:</h4>
+        <pre>
+var age = prompt("Enter your age:");
+if (age) {
+  var currentYear = new Date().getFullYear();
+  var birthYear = currentYear - parseInt(age);
+  var result = "Your age is " + age + "\nYour birth year is " + birthYear;
+  displayOutput("output13", result);
+}</pre
+        >
+        <button onclick="runQ13()">Run Code</button>
+        <div id="output13" class="output-box"></div>
+      </div>
+
+      <div class="question-card">
+        <h3>Helper function to show output on screen</h3>
+        <h4>CODE:</h4>
+        <pre>
+function displayOutput(id, result) {
+  var element = document.getElementById(id);
+  element.style.display = "block";
+  element.innerText = result;
+}</pre
+        >
+      </div>
+    </div>
+
+    <script>
+      function displayOutput(id, result) {
+        var element = document.getElementById(id);
+        element.style.display = "block";
+        element.innerText = result;
+      }
+
+      function runQ1() {
+        var currentDate = new Date();
+        var result = currentDate;
+        displayOutput("output1", result);
+      }
+
+      function runQ2() {
+        var currentDate = new Date();
+        var dateStr = currentDate.toString();
+        var currentMonth = dateStr.slice(4, 7);
+        alert("Current month: " + currentMonth);
+        var result = "Current month: " + currentMonth;
+        displayOutput("output2", result);
+      }
+
+      function runQ3() {
+        var currentDate = new Date();
+        var dateStr = currentDate.toString();
+        var currentDay = dateStr.slice(0, 3);
+        alert("Today is " + currentDay);
+        var result = "Today is " + currentDay;
+        displayOutput("output3", result);
+      }
+
+      function runQ4() {
+        var currentDate = new Date();
+        var dayIndex = currentDate.getDay();
+        var result = "";
+        if (dayIndex === 0 || dayIndex === 6) {
+          result = "It's Fun day";
+        } else {
+          result = "It's a working day";
+        }
+        displayOutput("output4", result);
+      }
+
+      function runQ5() {
+        var currentDate = new Date();
+        var date = currentDate.getDate();
+        var result = "";
+        if (date < 16) {
+          result = "First fifteen days of the month";
+        } else {
+          result = "Last days of the month";
+        }
+        displayOutput("output5", result);
+      }
+
+      function runQ6() {
+        var currentDate = new Date();
+        var startOf1970 = new Date(1970, 0, 1);
+
+        var elapsedMilli = currentDate - startOf1970;
+        var elapsedMinutes = elapsedMilli / (1000 * 60);
+
+        var result =
+          "Current Date: " +
+          currentDate +
+          "\nElapsed milliseconds since January 1, 1970: " +
+          elapsedMilli +
+          "\nElapsed minutes since January 1, 1970: " +
+          elapsedMinutes;
+
+        displayOutput("output6", result);
+      }
+
+      function runQ7() {
+        var currentDate = new Date();
+        var hours = currentDate.getHours();
+        var result = "";
+        if (hours < 12) {
+          alert("It's AM");
+          result = "It's AM";
+        } else {
+          alert("It's PM");
+          result = "It's PM";
+        }
+        displayOutput("output7", result);
+      }
+
+      function runQ8() {
+        var laterDate = new Date(2020, 11, 31);
+        var result = "Later date: " + laterDate;
+        displayOutput("output8", result);
+      }
+
+      function runQ9() {
+        var ramadanStart = new Date(2015, 5, 18);
+        var currentDate = new Date();
+
+        var diffTime = currentDate - ramadanStart;
+        var diffDays = diffTime / (1000 * 60 * 60 * 24);
+
+        var result =
+          Math.floor(diffDays) + " days have passed since 1st Ramadan, 2015";
+
+        alert(result);
+        displayOutput("output9", result);
+      }
+
+      function runQ10() {
+        var referenceDate = new Date();
+        var startOf2015 = new Date(2015, 0, 1);
+
+        var diffMilli = referenceDate - startOf2015;
+        var diffSeconds = diffMilli / 1000;
+
+        var result =
+          "On reference date " +
+          referenceDate +
+          ",\n" +
+          Math.floor(diffSeconds) +
+          " seconds had passed since beginning of 2015";
+
+        displayOutput("output10", result);
+      }
+
+      function runQ11() {
+        var currentDate = new Date();
+        var currentHours = currentDate.getHours();
+        var updatedDate = new Date();
+        updatedDate.setHours(currentHours + 1);
+        var result =
+          "current date: " +
+          currentDate +
+          "\n1 hour ahead, it will be " +
+          updatedDate;
+        displayOutput("output11", result);
+      }
+
+      function runQ12() {
+        var currentDate = new Date();
+        var pastDate = new Date();
+        pastDate.setFullYear(currentDate.getFullYear() - 100);
+        alert("100 years back, it was " + pastDate);
+        var result =
+          "current date: " +
+          currentDate +
+          "\n100 years back, it was " +
+          pastDate;
+        displayOutput("output12", result);
+      }
+
+      function runQ13() {
+        var age = prompt("Enter your age:");
+        if (age && !isNaN(age)) {
+          var currentYear = new Date().getFullYear();
+          var birthYear = currentYear - parseInt(age);
+          var result =
+            "Your age is " + age + "\nYour birth year is " + birthYear;
+          displayOutput("output13", result);
+        } else if (age) {
+          alert("Please enter a valid number for age!");
+        }
+      }
+    </script>
+  </body>
 </html>
