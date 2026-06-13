@@ -91,12 +91,17 @@ displayOutput("output1", result);</pre
         </h3>
         <h4>CODE:</h4>
         <pre>
-var currentDate = new Date();
-var dateStr = currentDate.toString();
-var currentMonth = dateStr.slice(4, 7);
-alert("Current month: " + currentMonth);
-var result = "Current month: " + currentMonth;
-displayOutput("output2", result);</pre
+  var monthNames = ["January", "February", "March", "April", "May", "June", 
+                    "July", "August", "September", "October", "November", "December"];
+  
+  var currentDate = new Date();
+  var monthIndex = currentDate.getMonth();
+  var currentMonth = monthNames[monthIndex];
+  
+  alert("Current month: " + currentMonth);
+  
+  var result = "Current month: " + currentMonth;
+  displayOutput("output2", result);</pre
         >
         <button onclick="runQ2()">Run Code</button>
         <div id="output2" class="output-box"></div>
@@ -366,10 +371,27 @@ function displayOutput(id, result) {
       }
 
       function runQ2() {
+        var monthNames = [
+          "January",
+          "February",
+          "March",
+          "April",
+          "May",
+          "June",
+          "July",
+          "August",
+          "September",
+          "October",
+          "November",
+          "December",
+        ];
+
         var currentDate = new Date();
-        var dateStr = currentDate.toString();
-        var currentMonth = dateStr.slice(4, 7);
+        var monthIndex = currentDate.getMonth();
+        var currentMonth = monthNames[monthIndex];
+
         alert("Current month: " + currentMonth);
+
         var result = "Current month: " + currentMonth;
         displayOutput("output2", result);
       }
